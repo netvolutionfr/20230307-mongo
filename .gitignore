@@ -1,4 +1,2 @@
 .env
-.env-mongo
-.env-mongo-express
-data/*
+data/
