@@ -1,0 +1,26 @@
+{
+  "name": "20230307-mongo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/netvolutionfr/20230307-mongo.git"
+  },
+  "author": "Stanis Humez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/netvolutionfr/20230307-mongo/issues"
+  },
+  "homepage": "https://github.com/netvolutionfr/20230307-mongo#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongodb": "^5.1.0",
+    "mongoose": "^7.0.1"
+  }
+}

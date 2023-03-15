@@ -6,36 +6,29 @@ services:
     container_name: mongo
     restart: always
     ports:
-      - 27017:27017
+      - ${MONGO_PORT}:${MONGO_PORT}
     volumes:
       - ./data/db:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
     networks:
       - backend
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
-      MONGO_INITDB_DATABASE: test
+    env_file:
+      - .env
 
   mongo-express:
     image: mongo-express
     container_name: mongo-express
     restart: always
     ports:
-      - 8083:8081
+      - ${MONGO_EXPRESS_PORT}:${MONGO_EXPRESS_PORT}
     depends_on:
       - mongo
     networks:
       - backend
-    environment:
-      ME_CONFIG_MONGODB_SERVER: mongo
-      ME_CONFIG_MONGODB_PORT: 27017
-      ME_CONFIG_MONGODB_ENABLE_ADMIN: 'false'
-      ME_CONFIG_MONGODB_AUTH_DATABASE: admin
-      ME_CONFIG_MONGODB_AUTH_USERNAME: root
-      ME_CONFIG_MONGODB_AUTH_PASSWORD: root
-      ME_CONFIG_BASICAUTH_USERNAME: dev
-      ME_CONFIG_BASICAUTH_PASSWORD: dev
-    
+    env_file:
+      - .env
+
+
 networks:
   backend:
     driver: bridge
